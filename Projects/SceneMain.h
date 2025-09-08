@@ -58,6 +58,7 @@ public:
 private:
 	//フレーム
 	int m_frame;	//フレームを計測
+	float m_clearFrame; //クリアしてからのフレーム
 
 	//使用するグラフィック
 	int m_playerIdleGraphHandle;	//プレイヤーのアイドルグラフィック

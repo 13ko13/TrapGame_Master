@@ -22,6 +22,7 @@ namespace
 
 SceneMain::SceneMain() :
 	m_frame(0),
+	m_clearFrame(0),
 	m_playerIdleGraphHandle(-1),
 	m_playerWalkGraphHandle(-1),
 	m_playerShotGraphHnadle(-1),
@@ -481,8 +482,7 @@ void SceneMain::Draw()
 
 		//ゲームオーバー表示
 		//文字を中央に表示する
-		int strGameoverWidth = GetDrawFormatStringWidthToHandle
-		(
+		int strGameoverWidth = GetDrawFormatStringWidthToHandle(
 			m_gameoverFontHandle,
 			"GAMEOVER");
 
@@ -789,9 +789,17 @@ void SceneMain::UpdateGame()
 
 void SceneMain::UpdateClear()
 {
+	m_pPlayer->Update();
+	m_clearFrame++;
 	//クリアしたときの処理
 	//クリア表示
-	m_pPlayer->Update();
+	if (m_clearFrame > 180)
+	{
+		//シーンをタイトルに変更
+		m_sceneTitle.Init();
+		m_gameSeq = SeqTitle;
+		m_clearFrame = 0;
+	}
 }
 
 void SceneMain::UpdateGameOver()
