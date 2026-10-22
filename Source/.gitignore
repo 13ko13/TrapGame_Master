@@ -30,3 +30,10 @@ ipch/
 *.tlog
 *.idb
 *.ilk
+
+# DxLibのライブラリはビルドに必要なので含める(x64用のみ)
+!Dxlib_h/*_vs2015_x64_MT.lib
+!Dxlib_h/*_vs2015_x64_MTd.lib
+
+# DxLib runtime log
+Log.txt
